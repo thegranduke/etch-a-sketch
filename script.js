@@ -19,13 +19,28 @@ function createGrid(GRIDSIZE){
             gridDiv.style.height = divDimensions + "px";
             gridDiv.style.border = "1px solid black";
             gridDiv.style.boxSizing = "border-box";
+            gridDiv.classList.add("gridDivs")
             container.appendChild(gridDiv);
         }
     }
 }
 
+function color(){
+    this.style.backgroundColor = "red"
+}
+
 document.addEventListener("DOMContentLoaded", ()=> {
     createGrid(16);
+
+    // Creating a container for all the grids blocks
+    gridDivs = document.querySelectorAll(".gridDivs");
+
+    //Adding an eventlistener to every block
+    for(let i = 0; i < gridDivs.length; i++){
+        gridDivs[i].addEventListener("mouseenter", color)
+    }
+    
+    
 });
 
 
