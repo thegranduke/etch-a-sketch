@@ -1,0 +1,25 @@
+/* General page styling*/
+body {
+    height:100%;
+}
+
+/*Section 1 styling*/
+
+.section1 {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Section 2 styling*/
+
+.section2{
+    display:flex;
+
+}
+
+.container{
+    padding: 15px;
+    
+}
+
