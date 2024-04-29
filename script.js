@@ -8,18 +8,18 @@ const CONTAINER_SIZE = 450;
 function createGrid(GRIDSIZE){
     let divDimensions = (CONTAINER_SIZE/GRIDSIZE);
     const container = document.querySelector(".container");
+    container.innerHTML = "";
     
 
     for( let i = 0; i < GRIDSIZE; i++ ){
         for(let j = 0; j < GRIDSIZE; j++ ){
-            console.log("i got here");
-            console.log(container);
             let gridDiv = document.createElement("div");
             gridDiv.style.width = divDimensions + "px";
             gridDiv.style.height = divDimensions + "px";
             gridDiv.style.border = "1px solid black";
             gridDiv.style.boxSizing = "border-box";
             gridDiv.classList.add("gridDivs")
+            gridDiv.addEventListener("mouseenter", color);
             container.appendChild(gridDiv);
         }
     }
@@ -30,16 +30,16 @@ function color(){
 }
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    createGrid(16);
 
-    // Creating a container for all the grids blocks
-    gridDivs = document.querySelectorAll(".gridDivs");
+    const slider = document.querySelector(".slider");
+    let gridSize = slider.value;
+    createGrid(gridSize);
 
-    //Adding an eventlistener to every block
-    for(let i = 0; i < gridDivs.length; i++){
-        gridDivs[i].addEventListener("mouseenter", color)
-    }
-    
+    slider.addEventListener("input", ()=> {
+        let gridSize = slider.value;
+        createGrid(gridSize);      
+    });
+
     
 });
 
