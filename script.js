@@ -19,14 +19,18 @@ function createGrid(GRIDSIZE){
             gridDiv.style.border = "1px solid black";
             gridDiv.style.boxSizing = "border-box";
             gridDiv.classList.add("gridDivs")
-            gridDiv.addEventListener("mouseenter", color);
+            gridDiv.addEventListener("mouseenter", solidColor);
             container.appendChild(gridDiv);
         }
     }
 }
 
-function color(){
-    this.style.backgroundColor = "red"
+
+
+function solidColor(){
+    const solidColorPicker = document.querySelector(".color");
+    let solidColor = solidColorPicker.value;
+    this.style.backgroundColor = solidColor;
 }
 
 document.addEventListener("DOMContentLoaded", ()=> {
