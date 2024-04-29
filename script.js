@@ -19,7 +19,7 @@ function createGrid(GRIDSIZE){
             gridDiv.style.border = "1px solid black";
             gridDiv.style.boxSizing = "border-box";
             gridDiv.classList.add("gridDivs")
-            gridDiv.addEventListener("mouseenter", solidColor);
+            gridDiv.addEventListener("mouseenter", randomColor);
             container.appendChild(gridDiv);
         }
     }
@@ -32,6 +32,22 @@ function solidColor(){
     let solidColor = solidColorPicker.value;
     this.style.backgroundColor = solidColor;
 }
+
+function randomColor(){
+    
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
+    let redHex = red.toString(16);
+    let greenHex = green.toString(16);
+    let blueHex = blue.toString(16);
+
+    color = "#" + redHex + greenHex + blueHex;
+    this.style.backgroundColor = color;
+}
+
+
 
 document.addEventListener("DOMContentLoaded", ()=> {
 
