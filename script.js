@@ -1,5 +1,3 @@
-
-const GRIDSIZE = 16;
 const CONTAINER_SIZE = 450;
 
 
@@ -27,7 +25,6 @@ function createGrid(GRIDSIZE){
 }
 
 
-
 function solidColor(){
     const solidColorPicker = document.querySelector(".color");
     let solidColor = solidColorPicker.value;
@@ -49,7 +46,6 @@ function randomColor(){
 }
 
 function colorShading(color,element){
-    console.log(color);
     
     let formattedValue = color.match(/\d+/g).map(Number);
     
@@ -57,16 +53,9 @@ function colorShading(color,element){
     let green = Math.max(formattedValue[1] - 25, 0);
     let blue = Math.max(formattedValue[2] - 25, 0);
 
-
-    console.log(formattedValue);
-    console.log(red);
-    console.log(green);
-    console.log(blue);
-
     let newColor = "rgb(" + red + "," + green + "," + blue + ")";
 
     element.style.backgroundColor = newColor;
-    
     
     return newColor;
 }
@@ -99,17 +88,27 @@ document.addEventListener("DOMContentLoaded", ()=> {
         for( let i = 0; i < gridDivs.length; i++){
 
             // Store the original color of each gridDiv using a custom data attribute
-            gridDivs[i].setAttribute('data-original-color', gridDivs[i].style.backgroundColor);
+            gridDivs[i].setAttribute('original-color', gridDivs[i].style.backgroundColor);
+            console.log(gridDivs[i].getAttribute("original-color"));
             
             gridDivs[i].addEventListener("mouseenter",(event) => { 
 
-                let divColor = event.target.getAttribute('data-original-color');
+                let divColor = event.target.getAttribute('original-color');
                 divColor = colorShading(divColor,event.target);
-                gridDivs[i].setAttribute('data-original-color', divColor);
+
+                // update the value of the custom data attribute
+                gridDivs[i].setAttribute('original-color', divColor);
             });
         }
 
     });
+
+    const clearButton = document.querySelector(".clear-button");
+    clearButton.addEventListener("click", () => {
+        let gridSize = slider.value;
+        createGrid(gridSize);
+        
+    } );
 
     
 });
