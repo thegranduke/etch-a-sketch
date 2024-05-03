@@ -89,6 +89,11 @@ button:hover{
     color:#171717;
 }
 
+.borders{
+    border: 1px solid black;
+
+}
+
 /*footer styling*/
 
 footer{
