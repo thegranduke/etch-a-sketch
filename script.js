@@ -188,6 +188,27 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     });
 
+    const solidColorInput = document.querySelector(".color")
+    solidColorInput.addEventListener("input", () => {
+
+        let gridDivs = document.querySelectorAll(".gridDivs");
+        for( let i = 0; i < gridDivs.length; i++){
+            gridDivs[i].addEventListener("mouseenter",(event)=>{
+                if(event.buttons === 1){
+                    solidColor(event.target);
+                }
+            });
+
+            gridDivs[i].addEventListener("mousedown",(event)=>{
+                if(event.buttons === 1){
+                    solidColor(event.target);
+                }
+            });
+        }
+
+
+    });
+
 
     // Select all buttons
     const buttons = document.querySelectorAll(".highlightable");
