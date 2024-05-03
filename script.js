@@ -42,6 +42,10 @@ function solidColor(element){
     
 
 }
+
+function erase(element){
+    element.style.backgroundColor = "white"
+}
     
 
 function randomColor(element){
@@ -148,6 +152,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
         
     } );
 
+
+    // Toggle borders
     const borderButton = document.querySelector(".border-toggle");
     borderButton.addEventListener("click",() => {
 
@@ -155,6 +161,29 @@ document.addEventListener("DOMContentLoaded", ()=> {
         for( let i = 0; i < gridDivs.length; i++){
             gridDivs[i].classList.toggle("borders");
         }
+
+
+    });
+
+    // Enable eraser
+    const eraser = document.querySelector(".eraser-button");
+    eraser.addEventListener("click",() => {
+
+        let gridDivs = document.querySelectorAll(".gridDivs");
+        for( let i = 0; i < gridDivs.length; i++){
+            gridDivs[i].addEventListener("mouseenter",(event)=>{
+                if(event.buttons === 1){
+                    erase(event.target);
+                }
+            });
+
+            gridDivs[i].addEventListener("mousedown",(event)=>{
+                if(event.buttons === 1){
+                    erase(event.target);
+                }
+            });
+        }
+
 
 
     });
