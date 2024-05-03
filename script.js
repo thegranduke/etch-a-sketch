@@ -23,7 +23,13 @@ function createGrid(GRIDSIZE){
                 if (event.buttons === 1) { 
                     solidColor(event.target);
                 }
+
             })
+            gridDiv.addEventListener("mousedown", (event) => {
+                if (event.buttons === 1) {
+                    solidColor(event.target);
+                }
+            });
             container.appendChild(gridDiv);
         }
     }
@@ -90,6 +96,12 @@ document.addEventListener("DOMContentLoaded", ()=> {
                     randomColor(event.target);
                 }
             });
+
+            gridDivs[i].addEventListener("mousedown",(event)=>{
+                if(event.buttons === 1){
+                    randomColor(event.target);
+                }
+            });
         }
 
     });
@@ -114,6 +126,18 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
                 }
             });
+
+            gridDivs[i].addEventListener("mousedown",(event) => { 
+
+                let divColor = event.target.getAttribute('original-color');
+
+                if ( event.buttons === 1){
+                    divColor = colorShading(divColor,event.target);
+                    // update the value of the custom data attribute
+                    gridDivs[i].setAttribute('original-color', divColor);
+
+                }
+            });
         }
 
     });
@@ -124,6 +148,16 @@ document.addEventListener("DOMContentLoaded", ()=> {
         createGrid(gridSize);
         
     } );
+
+    const borderButton = document.querySelector(".border-button");
+    borderButton.addEventListener("click",() => {
+
+        for( let i = 0; i < gridDivs.length; i++){
+            gridDivs[i].style.border = "none";
+        }
+
+
+    });
 
     
 });
