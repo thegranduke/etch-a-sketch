@@ -44,7 +44,7 @@ function solidColor(element){
 }
 
 function erase(element){
-    element.style.backgroundColor = "white"
+    element.style.backgroundColor = "rgb(255, 255, 255)"
 }
     
 
