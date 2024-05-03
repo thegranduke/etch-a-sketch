@@ -18,20 +18,28 @@ function createGrid(GRIDSIZE){
             gridDiv.style.boxSizing = "border-box";
             gridDiv.classList.add("gridDivs");
             gridDiv.style.backgroundColor = "rgb(255,255,255)";
-            gridDiv.addEventListener("mouseenter", solidColor);
+            gridDiv.addEventListener("mouseenter", (event) =>{
+                
+                if (event.buttons === 1) { 
+                    solidColor(event.target);
+                }
+            })
             container.appendChild(gridDiv);
         }
     }
 }
 
 
-function solidColor(){
-    const solidColorPicker = document.querySelector(".color");
-    let solidColor = solidColorPicker.value;
-    this.style.backgroundColor = solidColor;
-}
+function solidColor(element){
+        const solidColorPicker = document.querySelector(".color");
+        let solidColor = solidColorPicker.value;
+        element.style.backgroundColor = solidColor;
+    
 
-function randomColor(){
+}
+    
+
+function randomColor(element){
     
     let red = Math.floor(Math.random() * 256);
     let green = Math.floor(Math.random() * 256);
@@ -42,7 +50,7 @@ function randomColor(){
     let blueHex = blue.toString(16).padStart(2, '0');
 
     color = "#" + redHex + greenHex + blueHex;
-    this.style.backgroundColor = color;
+    element.style.backgroundColor = color;
 }
 
 function colorShading(color,element){
@@ -77,7 +85,11 @@ document.addEventListener("DOMContentLoaded", ()=> {
     rainbowButton.addEventListener("click", () =>{
         let gridDivs = document.querySelectorAll(".gridDivs");
         for( let i = 0; i < gridDivs.length; i++){
-            gridDivs[i].addEventListener("mouseenter",randomColor);
+            gridDivs[i].addEventListener("mouseenter",(event)=>{
+                if(event.buttons === 1){
+                    randomColor(event.target);
+                }
+            });
         }
 
     });
@@ -94,10 +106,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
             gridDivs[i].addEventListener("mouseenter",(event) => { 
 
                 let divColor = event.target.getAttribute('original-color');
-                divColor = colorShading(divColor,event.target);
 
-                // update the value of the custom data attribute
-                gridDivs[i].setAttribute('original-color', divColor);
+                if ( event.buttons === 1){
+                    divColor = colorShading(divColor,event.target);
+                    // update the value of the custom data attribute
+                    gridDivs[i].setAttribute('original-color', divColor);
+
+                }
             });
         }
 
