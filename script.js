@@ -188,6 +188,20 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     });
 
+
+    // Select all buttons
+    const buttons = document.querySelectorAll(".highlightable");
+
+    // Add click event listeners to each button
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+        // Remove "highlighted" class from all buttons
+        buttons.forEach(btn => btn.classList.remove("newcolor"));
+        // Add "highlighted" class to the clicked button
+        button.classList.add("newcolor");
+    });
+  });
+
     
 });
 
