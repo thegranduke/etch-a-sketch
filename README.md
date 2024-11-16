@@ -54,7 +54,7 @@ Some ideas for future development:
 
 ## Installation
 
-To run the **Grid Sketch Tool**, simply download the code and open the HTML file in a modern web browser.
+To run the **Grid Sketch Tool**, simply download the code and open the HTML file in a modern web browser or check it out [here](https://thegranduke.github.io/etch-a-sketch/)
 
 ---
 
